@@ -10,11 +10,11 @@ f = open(file, 'w')
 
 # site url
 base_url = 'https://www.instagram.com'
-url = 'https://www.instagram.com/viewfervor'
+url = '' # NOTE: add url name of instagram account
 
 
 # using driver to access website
-driver = webdriver.Chrome('C:/Users/Eigenaar/chromedriver.exe')
+driver = webdriver.Chrome('C:/Users/Eigenaar/chromedriver.exe') # NOTE: add location of (chrome) driver
 driver.get(url)
 
 

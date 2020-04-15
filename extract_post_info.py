@@ -9,6 +9,8 @@ from bs4 import BeautifulSoup as soup
 likes = []
 imgs = []
 
+i = 1
+
 # retreiving the urls
 with open('posts.csv') as f:
 	csv_reader = csv.reader(f, delimiter=',')
@@ -18,7 +20,7 @@ with open('posts.csv') as f:
 		url = row[0]
 
 		# using driver to access website
-		driver = webdriver.Chrome('C:/Users/Eigenaar/chromedriver.exe')
+		driver = webdriver.Chrome('') # NOTE: add location of (chrome) driver
 		driver.get(url)
 
 
@@ -32,36 +34,9 @@ with open('posts.csv') as f:
 		img_url = page.find('div', {'class':'KL4Bh'}).img['src']
 		imgs.append(img_url)
 
-
-		# TODO: saving images to local machine
-
-
 		# saving image to local machine
-		# urllib.request.urlretrieve(img_url, 'C://Users//Eigenaar//Documents//programming//python//webscrape//instagram//img') # url , local_path
+		urllib.request.urlretrieve(img_url, '' + str(i) + '.jpg') # file url, local_path
+		i += 1
 
 print(likes)
 print(imgs)
-
-
-## site url
-# url = 'https://www.instagram.com/viewfervor'
-
-
-# # using driver to access website
-# driver = webdriver.Chrome('C:/Users/Eigenaar/chromedriver.exe')
-# driver.get(url)
-
-
-# # get page source
-# page = soup(driver.page_source, 'html.parser')
-
-
-# # getting suffix for single posts and writing to file
-# suffix_list = page.findAll('div', {'class':'v1Nh3'})
-
-# for el in suffix_list:
-# 	suffix = el.a['href']
-# 	print(suffix)
-# 	f.write(base_url + suffix + '\n')
-
-# f.close()
